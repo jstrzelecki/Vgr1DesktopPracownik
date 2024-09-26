@@ -46,6 +46,6 @@ public partial class MainWindow : Window
 
     private void ApplyPassword(object? sender, RoutedEventArgs e)
     {
-        throw new System.NotImplementedException();
+        // throw new System.NotImplementedException();
     }
 }
