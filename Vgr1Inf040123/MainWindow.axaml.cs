@@ -12,6 +12,7 @@ public partial class MainWindow : Window
     private readonly string capitalChars = "QWERTYUIOPASDFGHJKLZXCVBNM";
     private readonly string numbers = "0123456789";
     private readonly string specialCharacters = "!@#$%^&*()_+{}[]<>|";
+    private string password = string.Empty;
     
     public MainWindow()
     {
@@ -21,6 +22,7 @@ public partial class MainWindow : Window
     private void GeneratePassword(object? sender, RoutedEventArgs e)
     {
         int charNum;
+        password = "";
         try
         {
             charNum = int.Parse(NumericTypeTextBox.Text!.ToString());
@@ -34,8 +36,7 @@ public partial class MainWindow : Window
         bool isNumbers = Numbers.IsChecked ?? false;
         bool isSpecialChars = SpecialChars.IsChecked ?? false;
         
-        string password = "";
-        
+
         Random rnd = new();
         
         if (isBothLetters && charNum>0)
@@ -62,12 +63,20 @@ public partial class MainWindow : Window
             charNum--;
         }
 
-        Console.WriteLine(password);
+        var infoWindow = new InfoWindow();
+        infoWindow.InfoBlock.Text = password;
+        infoWindow.ShowDialog(this);
     }
 
     private void ApplyPassword(object? sender, RoutedEventArgs e)
     {
-        // throw new System.NotImplementedException();
+        var name = FirstName.Text;
+        var surname = LastName.Text;
+        var job = (Job.SelectedItem as ComboBoxItem).Content.ToString();
+        
+        var infoWindow = new InfoWindow();
+        infoWindow.InfoBlock.Text = $"Dane pracownika {name} {surname} {job} Hasło: {password}";
+        infoWindow.Show();
     }
 
     private void NumericTypeTextBox_OnTextChanged(object? sender, TextChangedEventArgs e)
