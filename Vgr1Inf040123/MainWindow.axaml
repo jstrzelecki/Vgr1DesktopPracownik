@@ -8,6 +8,7 @@
         CanResize="False"
         Height="500"
         Width="1000"
+        Background="#B0C4DE"
         >
     <Grid>
         <Grid.RowDefinitions>
@@ -23,13 +24,13 @@
             </Grid.ColumnDefinitions>
             
             
-                <Border BorderBrush="Black" 
+                <Border BorderBrush="White" 
                         BorderThickness="2" 
                         Margin="20, 50, 20, 10"
                         CornerRadius="5">
                     
                     <StackPanel Margin="10">
-                        <TextBlock Text="Dane pracownika"/>
+                        <TextBlock Text="Dane pracownika" Margin="0 -20 0 10 " Padding="5 0 5 0" HorizontalAlignment="Left" Background="#B0C4DE" Width="125"/>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -44,10 +45,10 @@
                             <TextBlock Grid.Row="1" Text="Nazwisko"/>
                             <TextBlock Grid.Row="2" Text="Stanowisko"/>
                             
-                            <TextBox Grid.Column="1" x:Name="FirstName"/>
-                            <TextBox Grid.Column="1" Grid.Row="1" x:Name="LastName"/>
+                            <TextBox Grid.Column="1" x:Name="FirstName" Background="#ffffff"/>
+                            <TextBox Grid.Column="1" Grid.Row="1" x:Name="LastName" Background="#ffffff"/>
                             
-                            <ComboBox Grid.Column="1" Grid.Row="2" Width="168" x:Name="Job">
+                            <ComboBox Grid.Column="1" Grid.Row="2" Width="168" x:Name="Job" Background="#ffffff">
                                 <ComboBoxItem>Kierownik</ComboBoxItem>
                                 <ComboBoxItem>Starszy programista</ComboBoxItem>
                                 <ComboBoxItem>Młodszy programista</ComboBoxItem>
@@ -57,14 +58,14 @@
                     </StackPanel>
                 </Border>
             
-            <Border Grid.Column="1" BorderBrush="Black" 
+            <Border Grid.Column="1" BorderBrush="White" 
                     BorderThickness="2" 
                     Margin="20, 50, 20, 10"
                     CornerRadius="5"
                     >
                 
                 <StackPanel Margin="10">
-                    <TextBlock Text="Generowanie hasła"/>
+                    <TextBlock Text="Generowanie hasła" Margin="0 -20 0 10 " Padding="5 0 5 0" HorizontalAlignment="Left" Background="#B0C4DE" Width="135"/>
                     
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -75,26 +76,29 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         
-                        <TextBlock Text="Ile znaków?" x:Name="CharsNum"/>
-                        <TextBox Grid.Column="1"/>
+                        <TextBlock Text="Ile znaków?" x:Name="CharsNum" VerticalAlignment="Center"/>
+                        <TextBox Background="#ffffff" x:Name="NumericTypeTextBox" Grid.Column="1"  TextChanged="NumericTypeTextBox_OnTextChanged"  />
                     </Grid>
                     
 
-                    <CheckBox Grid.Column="0" Grid.Row="0" x:Name="BothLetters" Content="Małe i wielkie litery"/>
-                    <CheckBox Grid.Column="0" Grid.Row="1" x:Name="Numbers" Content="Cyfry"/>
-                    <CheckBox Grid.Column="0" Grid.Row="2" x:Name="SpecialChars" Content="Znaki specjalne"/>
+                    <CheckBox Grid.Column="0" Grid.Row="0"
+                              CornerRadius="0" x:Name="BothLetters" Content="Małe i wielkie litery"/>
+                    <CheckBox Grid.Column="0" Grid.Row="1" 
+                              CornerRadius="0" x:Name="Numbers" Content="Cyfry"/>
+                    <CheckBox Grid.Column="0" Grid.Row="2"
+                              CornerRadius="0" x:Name="SpecialChars" Content="Znaki specjalne"/>
 
                     
                     <Button Content="Generuj hasło" HorizontalAlignment="Center"
+                            Foreground="White" Background="#4682B4"
                             Click="GeneratePassword"/>
                 </StackPanel>
             </Border>
             
             
         </Grid>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" >
-            <Button Content="Zatwierdź" Width="300" HorizontalContentAlignment="Center"
-                    Click="ApplyPassword"/>
-        </StackPanel>
+        <Button Grid.Row="1" Grid.ColumnSpan="2" Content="Zatwierdź" Width="300" HorizontalAlignment="Center"
+                Foreground="White" Background="#4682B4"
+                HorizontalContentAlignment="Center" Click="ApplyPassword"/>
     </Grid>
 </Window>

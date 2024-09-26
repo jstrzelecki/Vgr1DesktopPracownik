@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 
@@ -22,7 +23,7 @@ public partial class MainWindow : Window
         int charNum;
         try
         {
-            charNum = int.Parse(CharsNum.Text!.ToString());
+            charNum = int.Parse(NumericTypeTextBox.Text!.ToString());
         }
         catch (Exception)
         {
@@ -33,19 +34,51 @@ public partial class MainWindow : Window
         bool isNumbers = Numbers.IsChecked ?? false;
         bool isSpecialChars = SpecialChars.IsChecked ?? false;
         
-        
-        
+        string password = "";
         
         Random rnd = new();
         
-        // rnd
-        // if (isBothLetters)
+        if (isBothLetters && charNum>0)
+        {
+            password += capitalChars[rnd.Next(capitalChars.Length)];
+            charNum--;
+        }
 
-        
+        if (isNumbers && charNum > 0)
+        {
+            password += numbers[rnd.Next(numbers.Length)];
+            charNum--;
+        }
+
+        if (isSpecialChars && charNum > 0)
+        {
+            password += specialCharacters[rnd.Next(specialCharacters.Length)];
+            charNum--;
+        }
+
+        while (charNum>0)
+        {
+            password += smallChars[rnd.Next(smallChars.Length)];
+            charNum--;
+        }
+
+        Console.WriteLine(password);
     }
 
     private void ApplyPassword(object? sender, RoutedEventArgs e)
     {
         // throw new System.NotImplementedException();
+    }
+
+    private void NumericTypeTextBox_OnTextChanged(object? sender, TextChangedEventArgs e)
+    {
+        if (sender is TextBox textBox)
+        {
+            var newString = new string( textBox.Text?.Where(char.IsDigit).ToArray());
+            if (newString != textBox.Text)
+            {
+                textBox.Text = newString;
+            }
+        }
     }
 }

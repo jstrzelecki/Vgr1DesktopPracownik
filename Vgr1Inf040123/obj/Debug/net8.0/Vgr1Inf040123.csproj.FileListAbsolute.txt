@@ -65,3 +65,4 @@
 /home/js/RiderProjects/Vgr1Inf040123/Vgr1Inf040123/obj/Debug/net8.0/Vgr1Inf040123.csproj.CopyComplete
 /home/js/RiderProjects/Vgr1Inf040123/Vgr1Inf040123/obj/Debug/net8.0/Vgr1Inf040123.genruntimeconfig.cache
 /home/js/RiderProjects/Vgr1Inf040123/Vgr1Inf040123/obj/Debug/net8.0/ref/Vgr1Inf040123.dll
+/home/js/RiderProjects/Vgr1Inf040123/Vgr1Inf040123/obj/Debug/net8.0/Vgr1Inf040123.sourcelink.json
